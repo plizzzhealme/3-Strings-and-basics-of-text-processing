@@ -1,28 +1,34 @@
 package part01.task04;
 
-import static cleaner.Cleaner.getStringFromUser;
-import static cleaner.Cleaner.print;
+import static interaction.Interaction.getString;
+import static interaction.Interaction.print;
 
 public class Main {
     public static void main(String[] args) {
+        char[] arr;
+        int result;
+
         print("Enter the string");
-        String s = getStringFromUser();
-        System.out.println(countNumbers(s));
+        arr = getString().toCharArray();
+        result = countNumbers(arr);
+        System.out.printf("The string contains %d numbers", result);
     }
 
-    public static int countNumbers(String s) {
+    public static int countNumbers(char[] arr) {
+        int length = arr.length;
         int count = 0;
-        int length = s.length();
+        int i = 0;
 
-        for (int i = 0; i < length; i++) {
-            if (Character.isDigit(s.charAt(i))) {
+        while (i < length) {
+            if (Character.isDigit(arr[i])) {
                 count++;
                 i++;
 
-                while (i < length && Character.isDigit(s.charAt(i))) {
+                while (i < length && Character.isDigit(arr[i])) {
                     i++;
                 }
             }
+            i++;
         }
         return count;
     }

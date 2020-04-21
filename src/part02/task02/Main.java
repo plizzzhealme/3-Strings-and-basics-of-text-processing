@@ -1,11 +1,11 @@
 package part02.task02;
 
-import static cleaner.Cleaner.getStringFromUser;
+import static interaction.Interaction.getString;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("Enter the string");
-        String s = getStringFromUser();
+        String s = getString();
         System.out.println("Result string:");
         s = addBee(s);
         System.out.println(s);

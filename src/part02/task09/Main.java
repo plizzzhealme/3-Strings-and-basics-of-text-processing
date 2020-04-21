@@ -1,11 +1,11 @@
 package part02.task09;
 
-import static cleaner.Cleaner.getStringFromUser;
+import static interaction.Interaction.getString;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("Enter the string");
-        String s = getStringFromUser();
+        String s = getString();
         int lowerCase = countLowerCase(s);
         int upperCase = countUpperCase(s);
         System.out.println(String.format("UpperCase: %d%nLowerCase: %d", upperCase, lowerCase));

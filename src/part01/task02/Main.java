@@ -1,40 +1,52 @@
 package part01.task02;
 
-import static cleaner.Cleaner.getStringFromUser;
+import java.util.Arrays;
+
+import static interaction.Interaction.getString;
 
 public class Main {
     public static void main(String[] args) {
+        char[] arr;
+        char[] result;
+
         System.out.println("Enter the string");
-        String s = getStringFromUser();
-        System.out.println("Final string:");
-        System.out.println(replace(s));
+        arr = getString().toCharArray();
+        result = replace(arr, "word".toCharArray(), "letter".toCharArray());
+        System.out.println(result);
 
     }
 
-    private static String replace(String s) {
-        int strLen = s.length();
-        char[] finalWord = new char[s.length() * 2];
-        int finalWorldLength = 0;
+    private static char[] replace(char[] arr, char[] target, char[] replacement) {
+        int srcLength = arr.length;
+        int targetLength = target.length;
+        int replacementLength = replacement.length;
+        int tempLength = 0;
+        char[] temp = new char[Math.max(srcLength, srcLength * replacementLength / targetLength)];
+        int i = 0;
 
-        for (int i = 0; i < strLen; i++) {
-            if (i < strLen - 3
-                    && s.charAt(i) == 'w'
-                    && s.charAt(i + 1) == 'o'
-                    && s.charAt(i + 2) == 'r'
-                    && s.charAt(i + 3) == 'd') {
-                finalWord[finalWorldLength] = 'l';
-                finalWord[finalWorldLength + 1] = 'e';
-                finalWord[finalWorldLength + 2] = 't';
-                finalWord[finalWorldLength + 3] = 't';
-                finalWord[finalWorldLength + 4] = 'e';
-                finalWord[finalWorldLength + 5] = 'r';
-                i += 3;
-                finalWorldLength += 6;
+        while (i < srcLength - targetLength + 1) {
+            boolean matches = true;
+            int j = 0;
+
+            while (j < targetLength && matches) {
+                if (arr[i + j] != target[j]) {
+                    matches = false;
+                }
+                j++;
+            }
+
+            if (matches) {
+                System.arraycopy(replacement, 0, temp, tempLength, replacementLength);
+                i += targetLength;
+                tempLength += replacementLength;
             } else {
-                finalWord[finalWorldLength] = s.charAt(i);
-                finalWorldLength += 1;
+                temp[tempLength++] = arr[i++];
             }
         }
-        return new String(finalWord, 0, finalWorldLength);
+
+        while (i < srcLength) {
+            temp[tempLength++] = arr[i++];
+        }
+        return Arrays.copyOf(temp, tempLength);
     }
 }

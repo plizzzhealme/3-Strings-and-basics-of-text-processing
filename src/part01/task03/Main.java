@@ -1,21 +1,24 @@
 package part01.task03;
 
-import static cleaner.Cleaner.getStringFromUser;
-import static cleaner.Cleaner.print;
+import static interaction.Interaction.getString;
+import static interaction.Interaction.print;
 
 public class Main {
     public static void main(String[] args) {
+        char[] arr;
+        int result;
+
         print("Enter the string");
-        String s = getStringFromUser();
-        print("The string contains " + countDigits(s) + " digits");
+        arr = getString().toCharArray();
+        result = countDigits(arr);
+        System.out.printf("The string contains %d digits", result);
     }
 
-    private static int countDigits(String s) {
+    private static int countDigits(char[] arr) {
         int count = 0;
-        int length = s.length();
 
-        for (int i = 0; i < length; i++) {
-            if (Character.isDigit(s.charAt(i))) {
+        for (char c : arr) {
+            if (Character.isDigit(c)) {
                 count++;
             }
         }
