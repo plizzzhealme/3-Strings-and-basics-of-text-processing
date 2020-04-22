@@ -1,29 +1,27 @@
 package part02.task08;
 
-import static interaction.Interaction.getString;
+import static interaction.Interaction.getLine;
 
 public class Main {
     public static void main(String[] args) {
+        String s;
+        String longestWord;
+
         System.out.println("Enter the string");
-        String s = getString();
-        String word = findLongestWord(s);
-        System.out.println(String.format("The longest word:%n%s", word));
+        s = getLine();
+        longestWord = findLongestWord(s);
+        System.out.printf("The longest word is %s", longestWord);
     }
 
     private static String findLongestWord(String s) {
-        String[] words = s.split(" ");
-        int l = words.length;
+        String[] words = s.split("\\s+");
+        String longestWord = "";
 
-        if (l == 0) {
-            return "";
-        }
-        int maxWordIndex = 0;
-
-        for (int i = 1; i < l; i++) {
-            if (words[i].length() > words[maxWordIndex].length()) {
-                maxWordIndex = i;
+        for (String word : words) {
+            if (word.length() > longestWord.length()) {
+                longestWord = word;
             }
         }
-        return words[maxWordIndex];
+        return longestWord;
     }
 }

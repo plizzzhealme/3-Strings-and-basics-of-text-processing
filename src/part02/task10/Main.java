@@ -1,23 +1,26 @@
 package part02.task10;
 
-import static interaction.Interaction.getString;
+import static interaction.Interaction.getLine;
 
 public class Main {
     public static void main(String[] args) {
+        String s;
+        int count;
+
         System.out.println("Enter the string");
-        String s = getString();
-        int count = countSentences(s);
-        System.out.println(String.format("The string contains %d sentences", count));
+        s = getLine();
+        count = countSentences(s);
+        System.out.printf("The string contains %d sentences", count);
     }
 
     private static int countSentences(String s) {
-        int l = s.length();
+        int length = s.length();
         int count = 0;
 
-        for (int i = 0; i < l; i++) {
-            char c = s.charAt(i);
+        for (int i = 0; i < length; i++) {
+            char ch = s.charAt(i);
 
-            if (c == '.' || c == '!' || c == '?') {
+            if (ch == '.' || ch == '!' || ch == '?') {
                 count++;
             }
         }

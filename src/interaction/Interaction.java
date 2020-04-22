@@ -8,10 +8,6 @@ public class Interaction {
     private Interaction() {
     }
 
-    public static void print(String s) {
-        System.out.println(s);
-    }
-
     public static String getString() {
         return in.next();
     }
@@ -23,7 +19,7 @@ public class Interaction {
     public static int getInt() {
         while (!in.hasNextInt()) {
             in.next();
-            print("Enter an integer");
+            System.out.println("Enter an integer");
         }
         return in.nextInt();
     }
@@ -39,5 +35,9 @@ public class Interaction {
             }
         } while (n <= 0);
         return n;
+    }
+
+    public static char getChar() {
+        return in.next().charAt(0);
     }
 }

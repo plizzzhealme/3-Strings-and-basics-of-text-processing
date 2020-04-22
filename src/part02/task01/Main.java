@@ -1,40 +1,35 @@
 package part02.task01;
 
-import static interaction.Interaction.getString;
+import static interaction.Interaction.getLine;
 
 public class Main {
     public static void main(String[] args) {
+        String s;
+        int max;
+
         System.out.println("Enter the string");
-        String s = getString();
-        System.out.println("Max spaces in a row: " + countSpaces(s));
+        s = getLine();
+        System.out.println(s);
+        max = countSpaces(s);
+        System.out.printf("Max spaces in a row: %d", max);
     }
 
     private static int countSpaces(String s) {
-        int last = s.lastIndexOf(' ');
-
-        if (last == -1) {
-            return 0;
-        }
-
+        int length = s.length();
+        int max = 0;
         int i = s.indexOf(' ');
 
-        if (i == last) {
-            return 1;
-        }
-        int max = 0;
-        int count = 0;
+        while (i >= 0) {
+            int count = 1;
+            i++;
 
-        while (i <= last) {
-            if (s.charAt(i) == ' ') {
+            while (i < length && s.charAt(i) == ' ') {
                 count++;
                 i++;
-            } else {
-                max = Math.max(max, count);
-                i = s.indexOf(' ', i);
-                count = 0;
             }
+            max = Math.max(max, count);
+            i = s.indexOf(' ', i);
         }
-
-        return Math.max(max, count);
+        return max;
     }
 }

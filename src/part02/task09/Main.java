@@ -4,21 +4,25 @@ import static interaction.Interaction.getString;
 
 public class Main {
     public static void main(String[] args) {
+        String s;
+        int upperCount;
+        int lowerCount;
+
         System.out.println("Enter the string");
-        String s = getString();
-        int lowerCase = countLowerCase(s);
-        int upperCase = countUpperCase(s);
-        System.out.println(String.format("UpperCase: %d%nLowerCase: %d", upperCase, lowerCase));
+        s = getString();
+        upperCount = countUpperCase(s);
+        lowerCount = countLowerCase(s);
+        System.out.printf("UpperCase: %d LowerCase: %d", upperCount, lowerCount);
     }
 
     private static int countUpperCase(String s) {
-        int l = s.length();
+        int length = s.length();
         int count = 0;
 
-        for (int i = 0; i < l; i++) {
-            char c = s.charAt(i);
+        for (int i = 0; i < length; i++) {
+            char ch = s.charAt(i);
 
-            if (c >= 'A' && c <= 'Z') {
+            if ('A' <= ch && ch <= 'Z') {
                 count++;
             }
         }
@@ -26,13 +30,13 @@ public class Main {
     }
 
     private static int countLowerCase(String s) {
-        int l = s.length();
+        int length = s.length();
         int count = 0;
 
-        for (int i = 0; i < l; i++) {
-            char c = s.charAt(i);
+        for (int i = 0; i < length; i++) {
+            char ch = s.charAt(i);
 
-            if (c >= 'a' && c <= 'z') {
+            if ('a' <= ch && ch <= 'z') {
                 count++;
             }
         }

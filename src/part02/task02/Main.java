@@ -4,25 +4,13 @@ import static interaction.Interaction.getString;
 
 public class Main {
     public static void main(String[] args) {
+        String s;
+        String result;
+
         System.out.println("Enter the string");
-        String s = getString();
-        System.out.println("Result string:");
-        s = addBee(s);
-        System.out.println(s);
-    }
-
-    private static String addBee(String s) {
-        int l = s.length();
-        StringBuilder stringBuilder = new StringBuilder();
-
-        for (int i = 0; i < l; i++) {
-            char c = s.charAt(i);
-            stringBuilder.append(c);
-
-            if (c == 'a') {
-                stringBuilder.append('b');
-            }
-        }
-        return stringBuilder.toString();
+        s = getString();
+        result = s.replace("a", "ab");
+        System.out.println("Final string:");
+        System.out.println(result);
     }
 }

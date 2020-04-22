@@ -1,17 +1,16 @@
 package part01.task04;
 
 import static interaction.Interaction.getString;
-import static interaction.Interaction.print;
 
 public class Main {
     public static void main(String[] args) {
         char[] arr;
-        int result;
+        int count;
 
-        print("Enter the string");
+        System.out.println("Enter the string");
         arr = getString().toCharArray();
-        result = countNumbers(arr);
-        System.out.printf("The string contains %d numbers", result);
+        count = countNumbers(arr);
+        System.out.printf("The string contains %d numbers", count);
     }
 
     public static int countNumbers(char[] arr) {

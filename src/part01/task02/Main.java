@@ -12,6 +12,7 @@ public class Main {
         System.out.println("Enter the string");
         arr = getString().toCharArray();
         result = replace(arr, "word".toCharArray(), "letter".toCharArray());
+        System.out.println("Final string:");
         System.out.println(result);
 
     }

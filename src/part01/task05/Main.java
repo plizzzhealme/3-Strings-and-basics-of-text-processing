@@ -12,6 +12,7 @@ public class Main {
         System.out.println("Enter the string");
         arr = getLine().toCharArray();
         result = removeSpaces(arr);
+        System.out.println("Final string:");
         System.out.println(result);
     }
 

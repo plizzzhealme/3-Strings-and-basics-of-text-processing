@@ -25,6 +25,8 @@ public class Main {
             snakes[i] = toSnake(camels[i]);
         }
 
+        System.out.println("snake_case:");
+
         for (char[] snake : snakes) {
             System.out.println(snake);
         }

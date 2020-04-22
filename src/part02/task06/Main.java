@@ -1,23 +1,26 @@
 package part02.task06;
 
-import static interaction.Interaction.getString;
+import static interaction.Interaction.getLine;
 
 public class Main {
     public static void main(String[] args) {
+        String s;
+        String result;
+
         System.out.println("Enter the string");
-        String s = getString();
-        s = duplicateSymbols(s);
+        s = getLine();
+        result = duplicateSymbols(s);
         System.out.println("Final string:");
-        System.out.println(s);
+        System.out.println(result);
     }
 
     private static String duplicateSymbols(String s) {
-        int l = s.length();
-        StringBuilder stringBuilder = new StringBuilder(l * 2);
+        int length = s.length();
+        StringBuilder stringBuilder = new StringBuilder(length * 2);
 
-        for (int i = 0; i < l; i++) {
-            char c = s.charAt(i);
-            stringBuilder.append(c).append(c);
+        for (int i = 0; i < length; i++) {
+            char ch = s.charAt(i);
+            stringBuilder.append(ch).append(ch);
         }
         return stringBuilder.toString();
     }

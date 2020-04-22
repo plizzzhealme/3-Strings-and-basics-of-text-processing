@@ -1,24 +1,26 @@
 package part02.task05;
 
-import static interaction.Interaction.getString;
+import static interaction.Interaction.getLine;
 
 public class Main {
     public static void main(String[] args) {
+        String s;
+        char ch = 'a';
+        int count;
+
         System.out.println("Enter the string");
-        String s = getString();
-        char c = 'a';
-        int n = countMatches(s, c);
-        System.out.println(String.format("The string contains %d a letters", n));
+        s = getLine();
+        count = countChars(s, ch);
+        System.out.printf("The string contains %d %c letters", count, ch);
     }
 
-    public static int countMatches(String s, char c) {
-        int l = s.length();
+    public static int countChars(String s, char ch) {
         int count = 0;
+        int i = s.indexOf(ch);
 
-        for (int i = 0; i < l; i++) {
-            if (s.charAt(i) == c) {
-                count++;
-            }
+        while (i >= 0) {
+            count++;
+            i = s.indexOf(ch, i + 1);
         }
         return count;
     }
